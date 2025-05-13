@@ -2,7 +2,7 @@
 
 `GO-Custom-Database-API` is a lightweight, file-based key-value store written in Go, designed for simple database tasks, demos, and small-scale applications. It stores data as JSON files in a directory structure by collections and provides RESTful APIs using the Fiber web framework.
 
-### 🧠 Why customDb?
+### 🧠 Why Custom DB ?
 
 - **No dependencies** beyond the Go standard library (and Fiber for the HTTP server)
 - Uses **`sync.Mutex`** to protect collections from race conditions in concurrent environments, preventing data corruption or unexpected behavior
