@@ -135,6 +135,34 @@ func GetUser(db *Driver) fiber.Handler {
 	}
 }
 
+// Controller for getting all users
+func GetAllUsers(db *Driver) fiber.Handler {
+	return func(c *fiber.Ctx) error {
+		dirPath := filepath.Join(db.dir, "users")
+		files, err := os.ReadDir(dirPath)
+		if err != nil {
+			return c.Status(fiber.StatusInternalServerError).SendString(fmt.Sprintf("Error reading users directory: %v", err))
+		}
+
+		var users []User
+		for _, file := range files {
+			if file.IsDir() || filepath.Ext(file.Name()) != ".json" {
+				continue
+			}
+
+			var user User
+			name := file.Name()[:len(file.Name())-len(".json")]
+			err := db.Read("users", name, &user)
+			if err == nil {
+				users = append(users, user)
+			}
+		}
+
+		return c.JSON(users)
+	}
+}
+
+
 // Controller for deleting a user by name
 func DeleteUser(db *Driver) fiber.Handler {
 	return func(c *fiber.Ctx) error {
@@ -164,6 +192,8 @@ func main() {
 	app.Post("/users", CreateUser(db))
 	app.Get("/users/:name", GetUser(db))
 	app.Delete("/users/:name", DeleteUser(db))
+	app.Get("/users", GetAllUsers(db)) 
+
 
 	// Start the server
 	err = app.Listen(":8001")
