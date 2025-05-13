@@ -12,7 +12,7 @@
 
 ## 📸 Demo
 
-[![Watch the video](https://raw.githubusercontent.com/Anurag340/Go-CustomDB-API/assets/go-db.png)](https://www.youtube.com/watch?v=lGG62EoVuHw)
+[![Watch the video](https://raw.githubusercontent.com/Anurag340/Go-CustomDB-API/main/assets/thumbnail.png)](https://www.youtube.com/watch?v=lGG62EoVuHw)
 
 ---
 
