@@ -1,0 +1,10 @@
+{
+  "name": "Alice",
+  "age": "30",
+  "contact": "1234567890",
+  "company": "ABC Corp",
+  "city": "New York",
+  "state": "NY",
+  "country": "USA",
+  "zipcode": "10001"
+}
